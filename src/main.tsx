@@ -8,6 +8,7 @@ import LoginPage from './features/auth/routes/login-page.tsx'
 import { AuthProvide } from './features/auth/auth-context.tsx'
 import { ProtectedRoutes } from './features/auth/components/auth-guard.tsx'
 import { SignUpPage } from './features/auth/routes/sign-up.tsx'
+import TasksPage from './features/tasks/routes/tasks-page.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,11 +18,13 @@ createRoot(document.getElementById('root')!).render(
           <Route path='/' element={<ProtectedRoutes />}>
             <Route element={<DashboardLayout />}>
               <Route index element={<Home />} />
+              <Route path='/tasks' element={<TasksPage />}/>
             </Route>
           </Route>
 
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          
         </Routes>
       </BrowserRouter>
     </AuthProvide>
