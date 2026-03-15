@@ -7,13 +7,13 @@ interface TaskItemProps {
 const getStatusColor = (status: string) => {
   switch (status) {
     case "Completed":
-      return "green";
+      return "#15803d";
     case "In Progress":
-      return "blue";
+      return "#1d4ed8";
     case "Pending":
-      return "orange";
+      return "#b45309";
     default:
-      return "gray";
+      return "#475569";
   }
 };
 

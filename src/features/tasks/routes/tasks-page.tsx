@@ -33,8 +33,10 @@ export default function TasksPage() {
         {["All", "Completed", "In Progress", "Pending"].map((status) => (
           <button
             key={status}
+            type="button"
+            aria-pressed={filter === status}
             onClick={() => setFilter(status)}
-            className={`px-4 py-1 rounded-full font-medium border ${
+            className={`px-4 py-1 rounded-full font-medium border cursor-pointer ${
               filter === status
                 ? "bg-blue-500 text-white border-blue-500"
                 : "bg-white text-gray-700 border-gray-300"
