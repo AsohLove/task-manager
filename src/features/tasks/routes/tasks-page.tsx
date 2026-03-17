@@ -5,7 +5,7 @@ import TaskList from "../components/TaskList";
 type Task = {
   id: number;
   title: string;
-  status: "Completed" | "In Progress" | "Pending";
+  status: "Completed" | "In Progress" | "Pending" | "Overdue";
 };
 
 const dummyTasks: Task[] = [
@@ -14,6 +14,7 @@ const dummyTasks: Task[] = [
   { id: 3, title: "Apply GSOC", status: "Pending" },
   { id: 4, title: "Learn React", status: "In Progress" },
   { id: 5, title: "Cook Yams", status: "Pending" },
+  { id: 6, title: "Bash Projects", status: "Overdue" },
 ];
 
 export default function TasksPage() {
@@ -30,7 +31,7 @@ export default function TasksPage() {
 
     
       <div className="flex gap-2 mb-6">
-        {["All", "Completed", "In Progress", "Pending"].map((status) => (
+        {["All", "Completed", "In Progress", "Pending", "Overdue"].map((status) => (
           <button
             key={status}
             type="button"
