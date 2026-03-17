@@ -7,10 +7,10 @@ type Task = {
 };
 
 const dummyTasks: Task[] = [
-    { id: 1, title: "Finish My Assignment", status: "Completed" },
+    { id: 1, title: "Finish My Assignment", status: "Pending" },
     { id: 2, title: "Go to school Early", status: "In Progress" },
     { id: 3, title: "Learn React in School", status: "In Progress" },
-    {id: 4, title: "Go Back Home Early", status: "Completed"}
+    { id: 4, title: "Go Back Home Early", status: "Pending" }
 ];
 
 export function Home() {
@@ -61,9 +61,16 @@ export function Home() {
 
             <section className="max-w-8xl px-8 py-10 lg:px-10">
                 <div className="rounded-[1.75rem] border border-stone-800/10 bg-white/75 p-6 shadow-sm">
-                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-700">Recent Tasks</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-700">Upcoming Tasks</p>
                     <div className="mt-5">
                         <TaskList tasks={dummyTasks} />
+                    </div>
+                </div>
+
+                <div className="rounded-[1.75rem] border border-stone-800/10 bg-white/75 p-6 shadow-sm my-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-700">Upcoming Events</p>
+                    <div className="mt-5">
+                        <p>No Current Event coming up</p>
                     </div>
                 </div>
             </section>
