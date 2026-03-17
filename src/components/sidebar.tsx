@@ -20,7 +20,7 @@ export function Sidebar() {
   const navigate = useNavigate();
 
 
-  auth?.isAuthenticated;
+//   auth?.isAuthenticated;
 
   if (!auth) {
     throw new Error("Sidebar must be used within AuthProvide");
