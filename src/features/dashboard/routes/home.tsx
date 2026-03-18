@@ -5,6 +5,10 @@ import { toast } from 'sonner';
 import { Toaster } from '../../../components/ui/sonner';
 
 export function Home() {
+    const completedCount = dummyTasks.filter(task => task.status === "Completed").length;
+    const inProgressCount = dummyTasks.filter(task => task.status === "In Progress").length;
+    const pendingCount = dummyTasks.filter(task => task.status === "Pending").length;
+
     useEffect(() => {
         toast.success("Welcome to Task Manager", {
             description: "This  TaskFlow app to organise your tasks"
@@ -31,15 +35,15 @@ export function Home() {
                         <div className="mt-5 grid gap-4 md:grid-cols-3">
                             <article className="rounded-3xl bg-green-100/70 p-5">
                                 <p className="text-sm font-semibold text-green-500/70">Completed Task</p>
-                                <p className="mt-2 text-sm leading-6 text-stone-500"> <span className="text-3xl text-green-500/70 font-extrabold">2</span> <br /> These are the task completed.</p>
+                                <p className="mt-2 text-sm leading-6 text-stone-500"> <span className="text-3xl text-green-500/70 font-extrabold">{completedCount}</span> <br /> These are the task completed.</p>
                             </article>
                             <article className="rounded-3xl bg-blue-100 p-5">
                                 <p className="text-sm font-semibold text-blue-600/70">InProgress Task</p>
-                                <p className="mt-2 text-sm leading-6 text-stone-500"><span className="text-3xl text-blue-600/70 font-extrabold">5</span> <br /> These are the tasks currently in the progress state.</p>
+                                <p className="mt-2 text-sm leading-6 text-stone-500"><span className="text-3xl text-blue-600/70 font-extrabold">{inProgressCount}</span> <br /> These are the tasks currently in the progress state.</p>
                             </article>
                             <article className="rounded-3xl bg-red-100/70 p-5">
                                 <p className="text-sm font-semibold text-red-800/90">Pending Task</p>
-                                <p className="mt-2 text-sm leading-6 text-stone-500"><span className="text-3xl text-red-800/90 font-extrabold">4</span> <br /> These are the current pending tasks in the stack </p>
+                                <p className="mt-2 text-sm leading-6 text-stone-500"><span className="text-3xl text-red-800/90 font-extrabold">{pendingCount}</span> <br /> These are the current pending tasks in the stack </p>
                             </article>
                         </div>
                     </div>
