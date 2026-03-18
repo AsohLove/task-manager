@@ -19,10 +19,10 @@ const getStatusColor = (status: string) => {
 
 export default function TaskItem({ title, status }: TaskItemProps) {
   return (
-    <li className="flex justify-between items-center p-4 border rounded shadow-sm hover:bg-gray-50">
+    <li className="flex justify-between text-xl items-center my-3 p-4 gap-4 w-full rounded shadow-sm hover:bg-gray-50">
       <span>{title}</span>
       <span
-        className="px-2 py-1 rounded-full text-white text-sm"
+        className="px-2 py-2 rounded-full text-white text-sm"
         style={{ backgroundColor: getStatusColor(status) }}
       >
         {status}
