@@ -25,13 +25,19 @@ export default function TaskList({ tasks, onDelete, view }: TaskListProps) {
           : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4"
       }`}
     >
+      
+
       {tasks.map((task) => (
-        <li key={task.id} className="flex items-center justify-between gap-3">
+        <li key={task.id} 
+        className={`${ view === "list" ? "flex items-center justify-between gap-3" : 
+        "flex flex-col gap-2 p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition"}`}>
+
           <TaskItem title={task.title} status={task.status} />
 
+         
           <button
             onClick={() => onDelete(task.id)}
-            className="ml-4 px-3 py-1 bg-red-400 text-white rounded hover:bg-red-600"
+            className=" ml-4 px-3 py-1 bg-red-400 text-white rounded hover:bg-red-600"
           >
             Delete
           </button>

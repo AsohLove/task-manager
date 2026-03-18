@@ -39,7 +39,7 @@ export default function TasksPage() {
         </p>
         <button
           onClick={() => setView("list")}
-          className={`px-3 py-1 border rounded transition cursor-pointer mr-4 ${
+          className={`px-3 py-1 border font-semibold rounded transition cursor-pointer mr-4 ${
             view === "list"
               ? "bg-blue-500 text-white border-blue-500"
               : "bg-white text-gray-700 border-gray-300"
@@ -49,7 +49,7 @@ export default function TasksPage() {
         </button>
         <button
           onClick={() => setView("card")}
-          className={`px-3 py-1 border rounded transition cursor-pointer ${
+          className={`px-3 py-1 border rounded font-semibold transition cursor-pointer ${
             view === "card"
               ? "bg-blue-500 text-white border-blue-500"
               : "bg-white text-gray-700 border-gray-300"
