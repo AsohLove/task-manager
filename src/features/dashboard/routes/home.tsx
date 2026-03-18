@@ -3,6 +3,7 @@ import { dummyTasks } from '../../tasks/routes/tasks-page';
 import { useEffect } from 'react';
 import { toast } from 'sonner';
 import { Toaster } from '../../../components/ui/sonner';
+import { Button } from '../../../components/ui/button';
 
 export function Home() {
     const completedCount = dummyTasks.filter(task => task.status === "Completed").length;
@@ -11,7 +12,7 @@ export function Home() {
 
     useEffect(() => {
         toast.success("Welcome to Task Manager", {
-            description: "This  TaskFlow app to organise your tasks"
+            description: "This  TaskFlow app to organize your tasks"
         })
     }, [])
 
@@ -65,7 +66,9 @@ export function Home() {
                 <div className="rounded-[1.75rem] border border-stone-800/10 bg-white/75 p-6 shadow-sm">
                     <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-700">Upcoming Tasks</p>
                     <div className="mt-5">
-                        <TaskList tasks={dummyTasks} />
+                        <TaskList tasks={dummyTasks} onDelete={function (id: number): void {
+                            throw new Error('Function not implemented.');
+                        } } view={'list'} />
                     </div>
                 </div>
 

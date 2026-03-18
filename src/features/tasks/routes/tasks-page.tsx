@@ -16,41 +16,41 @@ export const dummyTasks: Task[] = [
   { id: 6, title: "Bash Projects", status: "Overdue" },
 ];
 
-
-
-
 export default function TasksPage() {
-const [taskTitle, setTaskTitle] = useState("");
-const [extraTasks, setExtraTasks] = useState<Task[]>([]);
+  const [taskTitle, setTaskTitle] = useState("");
+  const [extraTasks, setExtraTasks] = useState<Task[]>([]);
   const [filter, setFilter] = useState("All");
   const [tasks, setTasks] = useState<Task[]>(dummyTasks);
   const [view, setView] = useState<"list" | "card">("list");
 
   const addTask = () => {
-  if (!taskTitle.trim()) return;
+    if (!taskTitle.trim()) return;
 
-  setExtraTasks([
-    ...extraTasks,
-    { id: Date.now(), title: taskTitle, status: "Pending" },
-  ]);
+    setExtraTasks([
+      ...extraTasks,
+      { id: Date.now(), title: taskTitle, status: "Pending" },
+    ]);
 
-    setTaskTitle("");}
+    setTaskTitle("");
+  };
 
-    const allTasks = [...dummyTasks, ...extraTasks];
+  const allTasks = [...tasks, ...extraTasks];
 
   const filteredTasks =
-    filter === "All" ? tasks : tasks.filter((task) => task.status === filter);
+    filter === "All" ? allTasks : allTasks.filter((task) => task.status === filter);
 
   const deleteTasks = (id: number) => {
-    setTasks((prevTasks: Task[]) => prevTasks.filter((task) => task.id !== id));
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
   return (
-    <div className="p-6 rounded bg-gray-100 h-screen">
+    <div className="p-6 rounded bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold uppercase mb-3 tracking-[0.16em] text-orange-700">
         Tasks
       </h1>
-      <div className="bg-amber-100 w-60 p-3">
+
+      {/* View Mode */}
+      <div className="bg-amber-100 w-60 p-3 mb-6">
         <p className="text-lg font-semibold text-stone-950 mb-3">
           Select your view mode
         </p>
@@ -76,51 +76,25 @@ const [extraTasks, setExtraTasks] = useState<Task[]>([]);
         </button>
       </div>
 
-      <div className="flex mb-6 mt-4 justify-between rounded-[1.75rem] border border-stone-800/10 bg-white/75 p-6 shadow-sm">
-        {["All", "Completed", "In Progress", "Pending", "Overdue"].map(
-          (status) => (
-            <button
-              key={status}
-              type="button"
-              aria-pressed={filter === status}
-              onClick={() => setFilter(status)}
-              className={`px-4 py-1 rounded-full font-medium border cursor-pointer ${
-                filter === status
-                  ? "bg-blue-500 text-white border-blue-500"
-                  : "bg-white text-gray-700 border-gray-300"
-              }`}
-            >
-              {status}
-            </button>
-          ),
-        )}
-    filter === "All"
-      ? allTasks
-      : allTasks.filter((task) => task.status === filter);
-
-  return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Tasks</h1>
-
+      
       <div className="flex gap-2 mb-4">
-  <input
-    value={taskTitle}
-    onChange={(e) => setTaskTitle(e.target.value)}
-    placeholder="New task..."
-    className="border px-3 py-1 rounded w-full"
-  />
+        <input
+          value={taskTitle}
+          onChange={(e) => setTaskTitle(e.target.value)}
+          placeholder="New task..."
+          className="border px-3 py-1 rounded w-full"
+        />
+        <button
+          onClick={addTask}
+          className="bg-green-500 text-white px-4 py-1 rounded"
+        >
+          Add
+        </button>
+      </div>
 
-  <button
-    onClick={addTask}
-    className="bg-green-500 text-white px-4 py-1 rounded"
-  >
-    Add
-  </button>
-</div>
-
-    
+      
       <div className="flex gap-2 mb-6">
-        {["All", "Completed", "In Progress", "Pending"].map((status) => (
+        {["All", "Completed", "In Progress", "Pending", "Overdue"].map((status) => (
           <button
             key={status}
             type="button"
@@ -137,6 +111,7 @@ const [extraTasks, setExtraTasks] = useState<Task[]>([]);
         ))}
       </div>
 
+     
       <TaskList tasks={filteredTasks} onDelete={deleteTasks} view={view} />
     </div>
   );
