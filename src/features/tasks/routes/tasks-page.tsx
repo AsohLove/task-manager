@@ -7,7 +7,7 @@ type Task = {
   status: "Completed" | "In Progress" | "Pending" | "Overdue";
 };
 
-const dummyTasks: Task[] = [
+export const dummyTasks: Task[] = [
   { id: 1, title: "Learn JavaScript", status: "Completed" },
   { id: 2, title: "Build Task Manager", status: "In Progress" },
   { id: 3, title: "Apply GSOC", status: "Pending" },
