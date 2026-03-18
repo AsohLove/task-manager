@@ -77,7 +77,7 @@ export default function TasksPage() {
       </div>
 
       
-      <div className="flex gap-2 mb-4">
+      <div className="flex gap-2 mb-5">
         <input
           value={taskTitle}
           onChange={(e) => setTaskTitle(e.target.value)}
