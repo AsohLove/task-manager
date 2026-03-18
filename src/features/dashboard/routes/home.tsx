@@ -1,7 +1,16 @@
 import TaskList from '../../tasks/components/TaskList'
 import { dummyTasks } from '../../tasks/routes/tasks-page';
+import { useEffect } from 'react';
+import { toast } from 'sonner';
+import { Toaster } from '../../../components/ui/sonner';
 
 export function Home() {
+    useEffect(() => {
+        toast.success("Welcome to Task Manager", {
+            description: "This  TaskFlow app to organise your tasks"
+        })
+    }, [])
+
     return (
         <>
             <section className="space-y-8 p-8 text-left lg:p-10">
@@ -35,14 +44,14 @@ export function Home() {
                         </div>
                     </div>
 
-                    <div className="rounded-[1.75rem] border border-stone-800/10 bg-gradient-to-br from-red-950 to-red-900/70 p-6 text-stone-50 shadow-sm">
+                    <div className="rounded-[1.75rem] border border-stone-800/10 bg-linear-to-br from-red-950 to-red-900/70 p-6 text-stone-50 shadow-sm">
                         <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-300">Team Load</p>
-                        <p className="mt-3 font-serif text-5xl leading-none">86%</p>
+                        <p className="mt-3 text-6xl leading-none">86%</p>
                         <p className="mt-3 text-sm leading-6 text-stone-300">
                             Delivery is on track, but one stream is approaching capacity. Rebalance after the afternoon review.
                         </p>
                         <div className="mt-6 h-2.5 overflow-hidden rounded-full bg-white/10">
-                            <div className="h-full w-[86%] rounded-full bg-gradient-to-r from-orange-400 to-amber-200" />
+                            <div className="h-full w-[86%] rounded-full bg-linear-to-r from-orange-400 to-amber-200" />
                         </div>
                     </div>
                 </div>
@@ -63,6 +72,20 @@ export function Home() {
                     </div>
                 </div>
             </section>
+
+            <Toaster
+                position="top-right"
+                toastOptions={{
+                    unstyled: true,
+                    classNames: {
+                        toast: "bg-orange-100/50 border-1 border-orange-700/20 text-black p-4 rounded-lg shadow-lg flex items-center gap-2",
+                        description: "!text-emerald-950/50 text-xs",
+                        actionButton: "text-black",
+                    },
+                }}
+                visibleToasts={1}
+                expand={false}
+            />
         </>
     )
 }
